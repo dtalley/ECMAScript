@@ -81,6 +81,14 @@ Variant::Type JavaScriptInstance::get_property_type(const StringName &p_name, bo
 	return Variant::NIL;
 }
 
+void JavaScriptInstance::validate_property(PropertyInfo &p_property) const {
+	if (javascript_class) {
+		if (const JavaScriptProperyInfo *pi = javascript_class->properties.getptr(p_property.name)) {
+			//TODO - Do something?
+		}
+	}
+}
+
 Variant JavaScriptInstance::callp(const StringName &p_method, const Variant **p_args, int p_argcount, Callable::CallError &r_error) {
 	if (binder == NULL || javascript_object.javascript_object == NULL) {
 		r_error.error = Callable::CallError::CALL_ERROR_INSTANCE_IS_NULL;

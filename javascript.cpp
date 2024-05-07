@@ -172,6 +172,10 @@ void JavaScript::_placeholder_erased(PlaceHolderScriptInstance *p_placeholder) {
 	instances.erase(p_placeholder->get_owner());
 	placeholders.erase(p_placeholder);
 }
+
+String JavaScript::get_class_icon_path() const {
+	return "";
+}
 #endif
 
 bool JavaScript::has_method(const StringName &p_method) const {
@@ -193,6 +197,10 @@ bool JavaScript::is_tool() const {
 	if (!javascript_class)
 		return false;
 	return javascript_class->tool;
+}
+
+bool JavaScript::is_abstract() const {
+	return false;
 }
 
 void JavaScript::get_script_method_list(List<MethodInfo> *p_list) const {
